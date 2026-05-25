@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comandas — Restaurante</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="app-wrapper">
+
+    <!-- ── Header ──────────────────────────────────────── -->
+    <header class="app-header">
+      <div class="brand">
+        <h1 class="brand-title">🍽 Comandas</h1>
+        <span class="brand-sub">Sistema de Pedidos</span>
+      </div>
+    </header>
+
+    <!-- ── Stats ───────────────────────────────────────── -->
+    <div class="stats-bar">
+      <div class="stat-chip">
+        <span class="stat-label">Abertas</span>
+        <span class="stat-value" id="stat-abertas">0</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-label">Total em aberto</span>
+        <span class="stat-value accent" id="stat-total">R$ 0,00</span>
+      </div>
+    </div>
+
+    <!-- ── Título seção ─────────────────────────────────── -->
+    <h2 class="section-title">Comandas abertas</h2>
+
+    <!-- ── Lista de comandas ────────────────────────────── -->
+    <div id="comandas-list"></div>
+
+    <!-- ── Empty state ──────────────────────────────────── -->
+    <div id="empty-state">
+      <div class="empty-icon">🗒️</div>
+      <div class="empty-title">Nenhuma comanda aberta</div>
+      <div class="empty-sub">Toque no botão <strong>+</strong> para criar a primeira comanda do dia.</div>
+    </div>
+
+  </div><!-- /app-wrapper -->
+
+  <!-- ── FAB ────────────────────────────────────────────── -->
+  <button id="btn-nova-comanda" title="Nova comanda">+</button>
+
+  <!-- ── Toast container ────────────────────────────────── -->
+  <div id="toast-container"></div>
+
+  <!-- ══════════════════════════════════════════════════════
+       Modal: Nova Comanda
+  ══════════════════════════════════════════════════════════ -->
+  <div class="modal-backdrop" id="modal-nova">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-nova-title">
+
+      <div class="modal-header">
+        <span class="modal-title" id="modal-nova-title">Nova Comanda</span>
+        <button class="modal-close" data-close-modal title="Fechar">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="input-numero">
+            Número da Comanda <span class="required">*</span>
+          </label>
+          <input
+            type="number"
+            id="input-numero"
+            class="form-input"
+            placeholder="Ex: 12"
+            min="1"
+            max="999"
+            autocomplete="new-password"
+          />
+          <span class="form-error" id="error-numero"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="input-nome">Nome do Cliente</label>
+          <input
+            type="text"
+            id="input-nome"
+            class="form-input"
+            placeholder="Opcional"
+            maxlength="60"
+            autocomplete="off"
+            spellcheck="false"
+            autocorrect="off"
+            autocapitalize="off"
+          />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal>Cancelar</button>
+        <button class="btn btn-primary" id="btn-criar-comanda">Criar Comanda →</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       Modal: Confirmação genérica
+  ══════════════════════════════════════════════════════════ -->
+  <div class="modal-backdrop" id="modal-confirm">
+    <div class="modal" role="dialog" aria-modal="true">
+
+      <div class="modal-header">
+        <span class="modal-title">Confirmação</span>
+        <button class="modal-close" data-close-modal title="Fechar">×</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="confirm-message"></p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal>Cancelar</button>
+        <button class="btn btn-primary" id="btn-confirm-ok">Confirmar</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Scripts ────────────────────────────────────────── -->
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

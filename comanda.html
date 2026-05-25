@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalhes da Comanda</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/comanda.css" />
+</head>
+<body class="comanda-page">
+
+  <!-- ══════════════════════════════════════════════════════
+       Topbar
+  ══════════════════════════════════════════════════════════ -->
+  <div class="comanda-topbar">
+    <button class="btn-back" id="btn-voltar" title="Voltar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+
+    <div class="comanda-identity">
+      <h1 id="comanda-numero">Comanda</h1>
+      <p id="comanda-cliente"></p>
+    </div>
+
+    <button class="btn btn-primary" id="btn-fechar-comanda" disabled>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      Fechar Comanda
+    </button>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       Conteúdo principal
+  ══════════════════════════════════════════════════════════ -->
+  <div class="comanda-content">
+
+    <!-- Sidebar de categorias -->
+    <aside class="sidebar-cats">
+      <nav id="category-nav"></nav>
+    </aside>
+
+    <!-- Painel de produtos -->
+    <main class="panel-products">
+      <div class="products-header">
+        <span id="category-title">Categoria</span>
+
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="search-input" placeholder="Buscar produto…" autocomplete="off" />
+        </div>
+      </div>
+
+      <div id="products-grid"></div>
+    </main>
+
+    <!-- Painel do pedido -->
+    <aside class="panel-order">
+      <div class="order-header">
+        <span class="order-title">Pedido</span>
+        <span class="order-count" id="order-count">0 itens</span>
+      </div>
+
+      <div id="order-empty">
+        <span class="order-empty-icon">🛒</span>
+        <span class="order-empty-text">Nenhum item adicionado ainda.</span>
+      </div>
+
+      <div id="order-list" style="display:none"></div>
+
+      <div class="order-footer">
+        <div class="order-total-row">
+          <span class="total-label">Total</span>
+          <span id="order-total">R$ 0,00</span>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       Modal: Fechar comanda
+  ══════════════════════════════════════════════════════════ -->
+  <div class="modal-backdrop" id="modal-fechar">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-fechar-title">
+
+      <div class="modal-header">
+        <span class="modal-title" id="modal-fechar-title">Fechar Comanda</span>
+        <button class="modal-close" data-close-modal title="Fechar">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="fechar-preview">
+          <div class="fechar-preview-label">Valor Total</div>
+          <span id="modal-total-preview">R$ 0,00</span>
+        </div>
+        <p class="fechar-info">
+          Ao fechar, a comanda será registrada como concluída e removida da lista de abertas.
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal>Cancelar</button>
+        <button class="btn btn-primary" id="btn-confirm-fechar">
+          Confirmar e Fechar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Scripts ────────────────────────────────────────── -->
+  <script src="js/storage.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/comanda.js"></script>
+
+</body>
+</html>
